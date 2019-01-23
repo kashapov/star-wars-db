@@ -5,12 +5,16 @@ import RandomPlanet from "../RandomPlanet";
 import ItemList from "../ItemList";
 import PersonDetails from "../PersonDetails";
 
+import ErrorButton from "../ErrorButton";
+import ErrorIndicator from "../ErrorIndicator";
+
 import "./App.css";
 
 export default class App extends Component {
   state = {
     showRandomPlanet: true,
-    selectedPerson: null
+    selectedPerson: null,
+    hasError: false
   };
 
   toggleRandomPlanet = () => {
@@ -29,7 +33,15 @@ export default class App extends Component {
     });
   };
 
+  componentDidCatch() {
+    this.setState({ hasError: true });
+  }
+
   render() {
+    if (this.state.hasError) {
+      return <ErrorIndicator />;
+    }
+
     const planet = this.state.showRandomPlanet ? <RandomPlanet /> : null;
 
     return (
@@ -37,12 +49,15 @@ export default class App extends Component {
         <Header />
         {planet}
 
-        <button
-          className="toggle-planet btn btn-warning btn-lg"
-          onClick={this.toggleRandomPlanet}
-        >
-          Toggle Random Planet
-        </button>
+        <div className="row mb2 button-row">
+          <button
+            className="toggle-planet btn btn-warning btn-lg"
+            onClick={this.toggleRandomPlanet}
+          >
+            Toggle Random Planet
+          </button>
+          <ErrorButton />
+        </div>
 
         <div className="row mb2">
           <div className="col-md-6">
