@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import SwapiSevice from "../../services/swapi-service";
 import Spinner from "../Spinner";
+import ErrorButton from "../ErrorButton";
 
 import "./PersonDetails.css";
 
@@ -94,6 +95,7 @@ const PersonView = ({ person }) => {
             <span>{eyeColor}</span>
           </li>
         </ul>
+        <ErrorButton />
       </div>
     </React.Fragment>
   );

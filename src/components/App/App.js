@@ -2,18 +2,16 @@ import React, { Component } from "react";
 
 import Header from "../Header";
 import RandomPlanet from "../RandomPlanet";
-import ItemList from "../ItemList";
-import PersonDetails from "../PersonDetails";
 
 import ErrorButton from "../ErrorButton";
 import ErrorIndicator from "../ErrorIndicator";
+import PeoplePage from "../PeoplePage";
 
 import "./App.css";
 
 export default class App extends Component {
   state = {
     showRandomPlanet: true,
-    selectedPerson: null,
     hasError: false
   };
 
@@ -22,14 +20,6 @@ export default class App extends Component {
       return {
         showRandomPlanet: !state.showRandomPlanet
       };
-    });
-  };
-
-  onItemSelected = id => {
-    //console.log(id);
-
-    this.setState({
-      selectedPerson: id
     });
   };
 
@@ -59,14 +49,7 @@ export default class App extends Component {
           <ErrorButton />
         </div>
 
-        <div className="row mb2">
-          <div className="col-md-6">
-            <ItemList onItemSelected={this.onItemSelected} />
-          </div>
-          <div className="col-md-6">
-            <PersonDetails personId={this.state.selectedPerson} />
-          </div>
-        </div>
+        <PeoplePage />
       </div>
     );
   }
