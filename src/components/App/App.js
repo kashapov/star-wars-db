@@ -58,7 +58,7 @@ export default class App extends Component {
           getData={this.swapiService.getAllPeople}
           renderItem={item => item.name}
         />
-
+        {/*
         <div className="row mb2">
           <div className="col-md-6">
             <ItemList
@@ -84,6 +84,8 @@ export default class App extends Component {
             <PersonDetails personId={this.state.selectedPerson} />
           </div>
         </div>
+
+*/}
       </div>
     );
   }
