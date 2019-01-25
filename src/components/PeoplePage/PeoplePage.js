@@ -2,17 +2,14 @@ import React, { Component } from "react";
 
 import ItemList from "../ItemList";
 import PersonDetails from "../PersonDetails";
-import ErrorIndicator from "../ErrorIndicator";
+import ErrorBoundry from "../ErrorBoundry";
 import Row from "../Row";
 
 import "./PeoplePage.css";
 
-
-
 export default class PeoplePage extends Component {
   state = {
-    selectedPerson: null,
-    hasError: false
+    selectedPerson: null
   };
 
   componentDidCatch(error, info) {
@@ -26,22 +23,19 @@ export default class PeoplePage extends Component {
   };
 
   render() {
-    if (this.state.hasError) {
-      return <ErrorIndicator />;
-    }
-
     const itemList = (
       <ItemList
         onItemSelected={this.onPersonSelected}
         getData={this.props.getData}
-        renderItem={({ name, gender, birthYear }) =>
-          `${name} (${gender}, ${birthYear})`
-        }
-      />
+      >
+        {i => `${i.name} (${i.birthYear})`}
+      </ItemList>
     );
 
     const personDetails = (
-      <PersonDetails personId={this.state.selectedPerson} />
+      <ErrorBoundry>
+        <PersonDetails personId={this.state.selectedPerson} />
+      </ErrorBoundry>
     );
 
     return <Row left={itemList} right={personDetails} />;
