@@ -27,6 +27,6 @@ const ItemList = props => {
   return <ul className="item-list list-group">{items}</ul>;
 };
 
-const { getAllPeople } = new SwapiService();
+//const { getAllPeople } = new SwapiService();
 
-export default withData(ItemList, getAllPeople);
+export default ItemList;
