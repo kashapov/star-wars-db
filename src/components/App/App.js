@@ -23,7 +23,6 @@ import {
   StarshipList
 } from "../sw-components";
 
-
 export default class App extends Component {
   swapiService = new SwapiService();
 

@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-import ItemDetails, { Record } from '../ItemDetails/ItemDetails';
-import SwapiService from '../../services/swapi-service';
+import ItemDetails, { Record } from "../ItemDetails/ItemDetails";
+import SwapiService from "../../services/swapi-service";
 
 const swapiService = new SwapiService();
 
@@ -15,13 +15,12 @@ const {
 } = swapiService;
 
 const PersonDetails = ({ itemId }) => {
-
   return (
     <ItemDetails
       itemId={itemId}
       getData={getPerson}
-      getImageUrl={getPersonImage} >
-
+      getImageUrl={getPersonImage}
+    >
       <Record field="gender" label="Gender" />
       <Record field="eyeColor" label="Eye Color" />
     </ItemDetails>
@@ -33,8 +32,8 @@ const PlanetDetails = ({ itemId }) => {
     <ItemDetails
       itemId={itemId}
       getData={getPlanet}
-      getImageUrl={getPlanetImage}>
-
+      getImageUrl={getPlanetImage}
+    >
       <Record field="population" label="Population" />
       <Record field="rotationPeriod" label="Rotation Period" />
       <Record field="diameter" label="Diameter" />
@@ -47,8 +46,8 @@ const StarshipDetails = ({ itemId }) => {
     <ItemDetails
       itemId={itemId}
       getData={getStarship}
-      getImageUrl={getStarshipImage}>
-
+      getImageUrl={getStarshipImage}
+    >
       <Record field="model" label="Model" />
       <Record field="length" label="Length" />
       <Record field="costInCredits" label="Cost" />
@@ -56,8 +55,4 @@ const StarshipDetails = ({ itemId }) => {
   );
 };
 
-export {
-  PersonDetails,
-  PlanetDetails,
-  StarshipDetails
-};
+export { PersonDetails, PlanetDetails, StarshipDetails };
