@@ -8,7 +8,7 @@ import ErrorIndicator from "../ErrorIndicator";
 import PeoplePage from "../PeoplePage";
 
 import ItemList from "../ItemList";
-import ItemDetails from "../ItemDetails";
+import ItemDetails, { Record } from "../ItemDetails/ItemDetails";
 import Row from "../Row";
 
 import "./App.css";
@@ -40,12 +40,31 @@ export default class App extends Component {
 
     const planet = this.state.showRandomPlanet ? <RandomPlanet /> : null;
 
-    const { getPerson, getStarship , getPersonImage, getStarshipImage} = this.swapiService;
+    const {
+      getPerson,
+      getStarship,
+      getPersonImage,
+      getStarshipImage
+    } = this.swapiService;
 
-    const personDetails = <ItemDetails itemId={11} getData={getPerson}
-    getImageUrl={getPersonImage} />;
+    const personDetails = (
+      <ItemDetails itemId={11} getData={getPerson} getImageUrl={getPersonImage}>
+        <Record field="gender" label="Gender" />
+        <Record field="eyeColor" label="Eye Color" />
+      </ItemDetails>
+    );
 
-    const starshipDetails = <ItemDetails itemId={5} getData={getStarship} getImageUrl={getStarshipImage} />;
+    const starshipDetails = (
+      <ItemDetails
+        itemId={5}
+        getData={getStarship}
+        getImageUrl={getStarshipImage}
+      >
+        <Record field="model" label="Model" />
+        <Record field="length" label="Length" />
+        <Record field="costInCredits" label="Cost" />
+      </ItemDetails>
+    );
 
     return (
       <div className="stardb-app">
