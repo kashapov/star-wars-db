@@ -11,7 +11,7 @@ import ErrorBoundry from "../ErrorBoundry";
 import ItemList from "../ItemList";
 import ItemDetails, { Record } from "../ItemDetails/ItemDetails";
 import Row from "../Row";
-import { SwapiServiceProvider } from "../swapi-service-context";
+import { SwapiServiceProvider } from "../SwapiServiceContext";
 
 import "./App.css";
 
@@ -22,7 +22,7 @@ import {
   PersonList,
   PlanetList,
   StarshipList
-} from "../sw-components";
+} from "../SwComponents";
 
 export default class App extends Component {
   swapiService = new SwapiService();
