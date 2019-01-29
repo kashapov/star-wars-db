@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import Header from "../Header";
 import RandomPlanet from "../RandomPlanet";
 import SwapiService from "../../services/swapi-service";
-import TestSwapiService from '../../services/test-swapi-service';
+import TestSwapiService from "../../services/test-swapi-service";
 import ErrorButton from "../ErrorButton";
 import ErrorIndicator from "../ErrorIndicator";
 import PeoplePage from "../PeoplePage";
@@ -26,10 +26,23 @@ import {
 } from "../SwComponents";
 
 export default class App extends Component {
-  swapiService = new TestSwapiService();
-
   state = {
-    showRandomPlanet: true
+    showRandomPlanet: true,
+    swapiService: new TestSwapiService()
+  };
+
+  onServiceChange = () => {
+    //console.log("Change Context Value");
+    this.setState(({ swapiService }) => {
+      const Service =
+        swapiService instanceof SwapiService ? TestSwapiService : SwapiService;
+
+      console.log("switched to: ", Service.name);
+
+      return {
+        swapiService: new Service()
+      };
+    });
   };
 
   toggleRandomPlanet = () => {
@@ -50,7 +63,7 @@ export default class App extends Component {
       getStarshipImage,
       getAllPeople,
       getAllPlanets
-    } = this.swapiService;
+    } = this.state.swapiService;
 
     const personDetails = (
       <ItemDetails itemId={11} getData={getPerson} getImageUrl={getPersonImage}>
@@ -73,9 +86,9 @@ export default class App extends Component {
 
     return (
       <ErrorBoundry>
-        <SwapiServiceProvider value={this.swapiService}>
+        <SwapiServiceProvider value={this.state.swapiService}>
           <div className="stardb-app">
-            <Header />
+            <Header onServiceChange={this.onServiceChange} />
 
             <PersonDetails itemId={11} />
 
