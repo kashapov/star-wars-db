@@ -48,7 +48,7 @@ export default class App extends Component {
                 render={() => <h3>Welcome to Star Wars Data Base</h3>}
                 exact
               />
-              <Route path="/people" component={PeoplePage} />
+              <Route path="/people/:id?" component={PeoplePage} />
               <Route path="/planets" component={PlanetPage} />
               <Route path="/starships" component={StarshipPage} exact />
               <Route
