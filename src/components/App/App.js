@@ -12,6 +12,7 @@ import { SwapiServiceProvider } from "../SwapiServiceContext";
 import { PeoplePage, PlanetPage, StarshipPage } from "../Pages";
 
 import "./App.css";
+import { StarshipDetails } from "../SwComponents";
 
 export default class App extends Component {
   state = {
@@ -42,9 +43,21 @@ export default class App extends Component {
 
               <RandomPlanet />
 
+              <Route
+                path="/"
+                render={() => <h3>Welcome to Star Wars Data Base</h3>}
+                exact
+              />
               <Route path="/people" component={PeoplePage} />
               <Route path="/planets" component={PlanetPage} />
-              <Route path="/starships" component={StarshipPage} />
+              <Route path="/starships" component={StarshipPage} exact />
+              <Route
+                path="/starships/:id"
+                render={({ match }) => {
+                  const { id } = match.params;
+                  return <StarshipDetails itemId={id} />;
+                }}
+              />
             </div>
           </Router>
         </SwapiServiceProvider>
