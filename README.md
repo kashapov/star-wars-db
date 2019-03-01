@@ -1,6 +1,7 @@
 # Star Wars DB Application on React.js
 -----
-using API https://swapi.co/
-<!--![react-todo-app](sw-db-preview.png)-->
+![react-todo-app](assets/star-wars-db-preview.png)
+
+using: React, API https://swapi.co/
 # Author
 Kashapov Andrey
